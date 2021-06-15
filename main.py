@@ -1,6 +1,9 @@
 import os
 import winsound
+import Enemy
+
 import Player
+import random
 
 
 introMsg = """ 
@@ -39,6 +42,41 @@ You have 3 paths in front of you:
 2. Going to a forest
 3. Going to desert  """)
         path_option = input("What is your destiny? ")
+
+        """Create a metod path(userPath)
+        that uses the returned value from crossroads method"""
+
+        if path_option == '1':
+            #in_the_village() from utils
+            print("You are in the village...")
+            print("From a backside ally a enemy appears")
+            random_number = random.randint(0, 2)
+
+            sound = "BattleFinal.wav"
+            winsound.PlaySound(sound, winsound.SND_ASYNC)
+            if random_number == 0:
+                enemy = Enemy.Goblin()
+                input("Press a key to continue...")
+            elif random_number == 1:
+                enemy = Enemy.Orc()
+                input("Press a key to continue...")
+            elif random_number == 2:
+                enemy = Enemy.Rat()
+                input("Press a key to continue...")
+            else:
+                print("Invalid enemy...")
+
+
+
+        elif path_option == '2':
+            #in_the_forest()
+            print("You are in the desert")
+        elif path_option == '3':
+            #in_the_desert()
+            print("You are in the desert...")
+        else:
+            print("Path not available")
+
 
 
     elif answer == '2':
